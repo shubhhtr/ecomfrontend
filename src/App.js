@@ -4,6 +4,7 @@ import './App.css';
 import Footer from "./Components/Footer.js";
 import SignUp from "./Components/SignUp.js";
 import PrivateRoute from "./Components/PrivateComponent";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </Route>
 
           <Route path="/signup" element={ <SignUp /> } />
+          <Route path="/login" element={ <Login /> } />
           
         </Routes>
       </BrowserRouter>
