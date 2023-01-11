@@ -1,11 +1,37 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login=()=>{
     const [email,setEmail]=useState("");
     const [pass,setPass]=useState("");
+    const navigate=useNavigate();
 
-    const collectData=()=>{
+    useEffect(()=>{
+        const vali=localStorage.getItem("user");
+        if(vali){
+            navigate("/");
+        }
+    })
+
+    const collectData=async ()=>{
         console.log(email,pass);
+        let result=await fetch("http://localhost:5000/login",{
+            method:"post",
+            body: JSON.stringify({email,pass}),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        });
+
+        result= await result.json();
+        console.log(result);
+        if(result.name){
+            localStorage.setItem("user",JSON.stringify(result));
+            navigate("/");
+        }
+        else{
+            alert("Email or Password is wrong");
+        }
     }
 
     return (

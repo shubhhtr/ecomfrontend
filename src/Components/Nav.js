@@ -20,8 +20,15 @@ const Nav=()=>{
                 <li><Link to="/add">Add</Link></li>
                 <li><Link to="/update">Update</Link></li>
                 <li><Link to="/profile">Profile</Link></li>
-                <li><Link to="/login">Login</Link></li>
-                <li> { vali ? <Link onClick={Logout} to="/signup">Logout</Link> : <Link to="/signup">SignUp</Link>}</li>;
+                
+                {
+                    vali ? <li><Link onClick={Logout} to="/signup">Logout</Link></li> :
+                    <>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/signup">SignUp</Link></li>
+                    </>
+                }
+
             </ul>
         </div>
     );
