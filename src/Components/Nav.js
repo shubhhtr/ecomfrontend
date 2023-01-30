@@ -15,21 +15,23 @@ const Nav=()=>{
 
     return (
         <div className="navbar">
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/add">Add</Link></li>
-                <li><Link to="/update">Update</Link></li>
-                <li><Link to="/profile">Profile</Link></li>
-                
-                {
-                    vali ? <li><Link onClick={Logout} to="/signup">Logout</Link></li> :
-                    <>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/signup">SignUp</Link></li>
-                    </>
-                }
+            <img className="logo" src="https://www.monsterinsights.com/wp-content/uploads/2019/11/breathtaking-online-shopping-statistics-you-never-knew-1250x600.png.webp"
+             alt="logo" />
 
-            </ul>
+            {
+                vali ? <ul>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/add">Add</Link></li>
+                    <li><Link to="/update">Update</Link></li>
+                    <li><Link to="/profile">Profile</Link></li>
+                    <li className="lout"><Link onClick={Logout} to="/signup">LogOut ({JSON.parse(vali).name})</Link></li>
+                </ul>
+                :
+                <ul className="log">
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/signup">SignUp</Link></li>
+                </ul>
+            }
         </div>
     );
 }
