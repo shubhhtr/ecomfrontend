@@ -46,10 +46,10 @@
   font-size: large;
   color: rgb(5, 119, 154)
 }
-.signup, .login, .addpro {
+.signup, .login, .addpro, .updatepro {
   margin-left: 30%;
 }
-.signup button, .login button, .addpro button {
+.signup button, .login button, .addpro button, .updatepro button {
   border: 1px black solid;
   border-radius: 5px;
   height: 40px;

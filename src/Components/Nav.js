@@ -22,7 +22,7 @@ const Nav=()=>{
                 vali ? <ul>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/add">Add</Link></li>
-                    <li><Link to="/update/test">Update</Link></li>
+                    <li><Link to="/update">Update</Link></li>
                     <li><Link to="/profile">Profile</Link></li>
                     <li className="lout"><Link onClick={Logout} to="/signup">LogOut ({JSON.parse(vali).name})</Link></li>
                 </ul>
