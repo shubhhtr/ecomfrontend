@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp.js";
 import PrivateRoute from "./Components/PrivateComponent";
 import Login from "./Components/Login";
 import AddPro from "./Components/AddProduct";
+import ListPro from "./Components/ListPro";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Routes>
 
           <Route element={<PrivateRoute />}>
-            <Route path="/" element={ <h1>Home Page</h1> } />
+            <Route path="/" element={ <ListPro /> } />
             <Route path="/add" element={ <AddPro /> } />
             <Route path="/update" element={ <h1>Update Page</h1> } />
             <Route path="/logout" element={ <h1>Logout Page</h1> } />
