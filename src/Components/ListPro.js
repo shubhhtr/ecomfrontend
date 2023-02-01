@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const ListPro=()=>{
     
     const [products,setProducts]=useState([]);
+
     useEffect(()=>{
         getProducts();
     },[]);
@@ -26,9 +27,25 @@ const ListPro=()=>{
         }
     }
 
+    const searchHandle=async (item)=>{
+        let key=item.target.value;
+        if(key){
+            let result = await fetch(`http://localhost:5000/search/${key}`);
+            result= await result.json();
+
+            if(result){
+                setProducts(result);
+            }
+        }
+        else{
+            getProducts();
+        }
+    }
+
     return <>
         <div className="productlist">
             <h2>Products</h2>
+            <input type="text" className="search-box" placeholder="Search Products" onChange={searchHandle} />
 
             <ul>
                 <li>S No.</li>
@@ -37,7 +54,8 @@ const ListPro=()=>{
                 <li>Category</li>
                 <li>Operation</li>
             </ul>
-            {
+            {   
+                products.length > 0 ?
                 products.map((item,index)=>
                     <ul>
                         <li>{index+1}</li>
@@ -50,6 +68,8 @@ const ListPro=()=>{
                         </li>
                     </ul>
                 )
+                :
+                <h1>No Products Found</h1>
             }
         </div>
     </>
