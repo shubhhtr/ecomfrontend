@@ -84,3 +84,17 @@
   margin-bottom: 10px;
   padding-top: 0;
 }
+
+.productlist {
+  text-align: center;
+  margin-top: 50px;
+}
+.productlist ul li{
+  display: inline-block;
+  border:black 1px solid;
+  padding: 5px;
+  width: 150px;
+}
+.productlist ul{
+  margin:0;
+}
