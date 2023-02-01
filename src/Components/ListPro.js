@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ListPro=()=>{
     
@@ -14,7 +15,16 @@ const ListPro=()=>{
         setProducts(result);
     }
 
-    console.warn("products",products);
+    const deletePro=async (id)=>{
+        console.warn(id);
+        let result=await fetch(`http://localhost:5000/product/${id}`,{
+            method:"delete"
+        });
+        result= await result.json();
+        if(result){
+            getProducts();
+        }
+    }
 
     return <>
         <div className="productlist">
@@ -25,6 +35,7 @@ const ListPro=()=>{
                 <li>Name</li>
                 <li>Price</li>
                 <li>Category</li>
+                <li>Operation</li>
             </ul>
             {
                 products.map((item,index)=>
@@ -33,6 +44,10 @@ const ListPro=()=>{
                         <li>{item.name}</li>
                         <li>{item.price}</li>
                         <li>{item.categ}</li>
+                        <li>
+                            <button onClick={()=>deletePro(item._id)}>Delete</button>
+                            <Link to={"/update/"+item._id}>Update</Link>
+                        </li>
                     </ul>
                 )
             }
